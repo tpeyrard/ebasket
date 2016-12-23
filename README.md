@@ -4,7 +4,7 @@ Come and help us build an e-commerce website focused on user experience
 
 ## Guidelines
 
-- clone this repo (do **not** fork it)
+- [duplicate](https://help.github.com/articles/duplicating-a-repository/) this repository (do **not** fork it)
 - solve the levels in ascending order
 - commit your code at least at the end of each level
 
