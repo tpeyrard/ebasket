@@ -12,8 +12,9 @@ Come and help us build an e-commerce website focused on user experience
 
 - clean code
 - tests
+- comments when you had to make decisions because the spec was not precise enough
 - a simple way to run the code and the tests
 
-## Aknowledgements
+## Acknowledgements
 
 This test is shamelessly inspired from the drivy test, that I found really great :)
