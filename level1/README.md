@@ -1,8 +1,11 @@
 # Level 1
 
-We are building an e-commerce website. Our customers can add articles to a virtual cart, purchase it, and we deliver them to their home the next day.
+We are building an e-commerce website. Our customers can:
+  - add articles to a virtual cart
+  - checkout the cart contents
+  - get it delivered the next day
 
-The price they are charged with is the sum of the prices of every article in their cart.
+The customer is charged the sum of the prices of each article in their cart.
 
 Prices are expressed in cents.
 

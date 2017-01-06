@@ -1,5 +1,6 @@
 # Level 2
 
-The delivery cost depends on the amount of the customers' cart: the more articles they purchase, the less we charge them.
+Cost of delivery depends on how much we charged the custormer for their cart’s contents
+The more the customer spends, the less they are charged for shipping.
 
 Write code that generates `output.json` from `data.json`
