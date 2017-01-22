@@ -10,7 +10,6 @@ Checkout.prototype.compute = function() {
 	}
 
 	var prices = {}
-	var articles = this.site.getArticles()
 	var carts = this.site.getCarts()
 	for(cart in carts) {	
 		var price = 0
