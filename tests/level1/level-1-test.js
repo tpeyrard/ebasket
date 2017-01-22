@@ -1,18 +1,18 @@
 var chai = require('chai');
 var sinon = require('sinon');
 var expect = chai.expect;
-var Cart = require('./../../src/cart');
+var Checkout = require('./../../src/checkout');
 
 describe('Level1', function() {
 
-	it('checkout() should return 0 when no items are ordered', function() {
-		var cart = new Cart({});
-		expect(cart.checkout()).to.equal(0);
+	it('should return 0 when no items are ordered', function() {
+		var checkout = new Checkout({});
+		expect(checkout.compute()).to.equal(0);
 	});
 
 
-	it('checkout() should return the correct amount for one cart with one article', function() {
-		var cart = new Cart({
+	it('should return the correct amount for one checkout with one article', function() {
+		var checkout = new Checkout({
 			"articles": [
 			{ "id": 1, "name": "water", "price": 100 }
 			],
@@ -25,11 +25,11 @@ describe('Level1', function() {
 			}
 			]
 		});
-		expect(cart.checkout()).to.equal(600);
+		expect(checkout.compute()).to.equal(600);
 	});	
 
-	it('checkout() should return the correct amount for one cart with two articles', function() {
-		var cart = new Cart({
+	it('should return the correct amount for one checkout with two articles', function() {
+		var checkout = new Checkout({
 			"articles": [
 			{ "id": 1, "name": "water", "price": 100 },
     		{ "id": 2, "name": "honey", "price": 200 },
@@ -44,6 +44,6 @@ describe('Level1', function() {
 			}
 			]
 		});
-		expect(cart.checkout()).to.equal(600);
+		expect(checkout.compute()).to.equal(600);
 	});	
 });
