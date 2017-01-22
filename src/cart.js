@@ -1,5 +1,8 @@
+var Parser = require('./parser');
+
 function Cart(articlesAndCarts) {
-	this.content = articlesAndCarts;
+	this.content = articlesAndCarts
+	this.parser = new Parser()
 }
 
 function isEmpty(jsonContent) {
@@ -12,7 +15,7 @@ Cart.prototype.checkout = function() {
 	}
 	
 	quantity = this.content.carts[0].items[0].quantity
-	price = this.content.articles[0].price
+	price = this.parser.parse(this.content).getArticles()[0].price
 
 	return quantity * price;
 };
