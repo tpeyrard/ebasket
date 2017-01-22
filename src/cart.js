@@ -1,8 +1,7 @@
-var Parser = require('./parser');
+var Site = require('./site');
 
 function Cart(articlesAndCarts) {
-	this.content = articlesAndCarts
-	this.parser = new Parser()
+	this.site = new Site().parse(articlesAndCarts)
 }
 
 function isEmpty(jsonContent) {
@@ -10,12 +9,12 @@ function isEmpty(jsonContent) {
 }
 
 Cart.prototype.checkout = function() {
-	if (isEmpty(this.content)) {
+	if (this.site.isEmpty()) {
 		return 0
 	}
-	
-	quantity = this.content.carts[0].items[0].quantity
-	price = this.parser.parse(this.content).getArticles()[0].price
+
+	quantity = this.site.getCarts()[0].items[0].quantity
+	price = this.site.getArticles()[0].price
 
 	return quantity * price;
 };
