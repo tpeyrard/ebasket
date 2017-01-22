@@ -27,4 +27,23 @@ describe('Level1', function() {
 		});
 		expect(cart.checkout()).to.equal(600);
 	});	
+
+	it('checkout() should return the correct amount for one cart with two articles', function() {
+		var cart = new Cart({
+			"articles": [
+			{ "id": 1, "name": "water", "price": 100 },
+    		{ "id": 2, "name": "honey", "price": 200 },
+			],
+			"carts": [
+			{
+				"id": 1,
+				"items": [
+				{ "article_id": 1, "quantity": 2 },
+				{ "article_id": 2, "quantity": 2 }
+				]
+			}
+			]
+		});
+		expect(cart.checkout()).to.equal(600);
+	});	
 });

@@ -13,10 +13,14 @@ Cart.prototype.checkout = function() {
 		return 0
 	}
 
-	quantity = this.site.getCarts()[0].items[0].quantity
-	price = this.site.getArticles()[0].price
+	var price = 0
+	var articles = this.site.getArticles()
+	var cart = this.site.getCarts()[0]
+	for (item in cart.items) {
+		price += item.quantity * 0
+	}
 
-	return quantity * price;
+	return price;
 };
 
 

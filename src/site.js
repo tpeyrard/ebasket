@@ -19,6 +19,12 @@ Site.prototype.parse = function(toParse){
 	return this;
 }
 
+Site.prototype.priceOf = function(articleId){
+  return this.articles.filter(
+      function(data){ return data.id == articleId }
+  )[0].price;
+}
+
 Site.prototype.getArticles = function() {
 	return this.articles
 };
