@@ -17,7 +17,7 @@ Cart.prototype.checkout = function() {
 	var articles = this.site.getArticles()
 	var cart = this.site.getCarts()[0]
 	for (item in cart.items) {
-		price += item.quantity * 0
+		price += cart.items[item].quantity * this.site.priceOf(cart.items[item].article_id)
 	}
 
 	return price;
