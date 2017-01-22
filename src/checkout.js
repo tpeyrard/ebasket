@@ -9,15 +9,34 @@ Checkout.prototype.compute = function() {
 		return 0
 	}
 
-	var price = 0
+	var prices = {}
 	var articles = this.site.getArticles()
-	var cart = this.site.getCarts()[0]
-	for (item in cart.items) {
-		price += cart.items[item].quantity * this.site.priceOf(cart.items[item].article_id)
+	var carts = this.site.getCarts()
+	for(cart in carts) {	
+		var price = 0
+		for (item in carts[cart].items) {
+			price += carts[cart].items[item].quantity * this.site.priceOf(carts[cart].items[item].article_id)
+		}
+		prices[carts[cart].id] = price
 	}
 
-	return price;
+	return generateOutput(carts, prices)
 };
 
+
+function generateOutput(carts, prices) {
+	var output = {
+		carts: []
+	};
+
+	carts.map(function(item) {       
+		output.carts.push({ 
+			"id" : item.id,
+			"total"  : prices[item.id]
+		});
+	})
+
+	return output;
+}
 
 module.exports = Checkout;
