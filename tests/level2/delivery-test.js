@@ -7,7 +7,7 @@ describe('Delivery fees', function () {
     it('should should be charged for a volume between 0 and 1000', function () {
         var checkout = new Checkout({
             "articles": [
-                { "id": 1, "name": "water", "price": 100 }
+                {"id": 1, "name": "water", "price": 100}
             ],
             "carts": [
                 {
@@ -31,7 +31,7 @@ describe('Delivery fees', function () {
     it('are charged for highest transaction volume', function () {
         var checkout = new Checkout({
             "articles": [
-                { "id": 1, "name": "water", "price": 100 }
+                {"id": 1, "name": "water", "price": 100}
             ],
             "carts": [
                 {
@@ -59,28 +59,28 @@ describe('Delivery fees', function () {
         expect(checkout.compute().carts[0].total).to.equal(3001);
     });
 
-    it('Acceptance test', function() {
+    it('Acceptance test', function () {
         var checkout = new Checkout({
             "articles": [
-                { "id": 1, "name": "water", "price": 100 },
-                { "id": 2, "name": "honey", "price": 200 },
-                { "id": 3, "name": "mango", "price": 400 },
-                { "id": 4, "name": "tea", "price": 1000 }
+                {"id": 1, "name": "water", "price": 100},
+                {"id": 2, "name": "honey", "price": 200},
+                {"id": 3, "name": "mango", "price": 400},
+                {"id": 4, "name": "tea", "price": 1000}
             ],
             "carts": [
                 {
                     "id": 1,
                     "items": [
-                        { "article_id": 1, "quantity": 6 },
-                        { "article_id": 2, "quantity": 2 },
-                        { "article_id": 4, "quantity": 1 }
+                        {"article_id": 1, "quantity": 6},
+                        {"article_id": 2, "quantity": 2},
+                        {"article_id": 4, "quantity": 1}
                     ]
                 },
                 {
                     "id": 2,
                     "items": [
-                        { "article_id": 2, "quantity": 1 },
-                        { "article_id": 3, "quantity": 3 }
+                        {"article_id": 2, "quantity": 1},
+                        {"article_id": 3, "quantity": 3}
                     ]
                 },
                 {

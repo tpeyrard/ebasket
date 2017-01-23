@@ -14,7 +14,7 @@ Discounter.prototype.applyDiscount = function (article) {
             if ('amount' === discount.type)
                 return article.price - discount.value
             else
-                return article.price * (discount.value / 100)
+                return Math.floor(article.price -(article.price * (discount.value / 100)))
         }
     }
     return article.price
