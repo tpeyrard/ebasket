@@ -1,5 +1,6 @@
 function Discounter() {
     this.discounts = []
+    this.rounding = function(price) {return Math.floor(price)};
 }
 
 Discounter.prototype.discountsFrom = function (discounts) {
@@ -14,7 +15,7 @@ Discounter.prototype.applyDiscount = function (article) {
             if ('amount' === discount.type)
                 return article.price - discount.value
             else
-                return Math.floor(article.price -(article.price * (discount.value / 100)))
+                return this.rounding(article.price -(article.price * (discount.value / 100)))
         }
     }
     return article.price
