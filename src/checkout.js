@@ -19,7 +19,9 @@ Checkout.prototype.compute = function() {
 		prices[carts[cart].id] = price
 	}
 
-	return generateOutput(carts, prices)
+	var pricesWithDeliveryFees = this.site.chargeForDelivery(prices)
+
+	return generateOutput(carts, pricesWithDeliveryFees)
 };
 
 
