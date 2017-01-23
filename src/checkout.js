@@ -14,7 +14,7 @@ Checkout.prototype.compute = function() {
 	for(var cart in carts) {
 		var price = 0;
 		for (var item in carts[cart].items) {
-			price += carts[cart].items[item].quantity * this.site.priceOf(carts[cart].items[item].article_id)
+            price += carts[cart].items[item].quantity * this.site.priceOf(carts[cart].items[item].article_id)
 		}
 		prices[carts[cart].id] = price
 	}

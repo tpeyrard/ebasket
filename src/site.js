@@ -1,45 +1,53 @@
 var Delivery = require('./delivery');
+var Discounter = require('./discounter');
 
 function Site() {
-	this.articles = [];
-	this.carts = [];
-	this.delivery = new Delivery();
+    this.articles = [];
+    this.carts = [];
+    this.delivery = new Delivery();
+    this.discounter = new Discounter();
 }
 
 Site.prototype.isEmpty = function () {
     return this.articles.length === 0 || this.carts.length === 0
 };
 
-Site.prototype.parse = function(toParse){
-	if (!isEmpty(toParse)) {
-		this.articles = toParse.articles;
-		this.carts = toParse.carts;
-		this.delivery.feesFrom(toParse.delivery_fees)
-	}
-	return this;
+Site.prototype.parse = function (toParse) {
+    if (!isEmpty(toParse)) {
+        this.articles = toParse.articles;
+        this.carts = toParse.carts;
+        this.delivery.feesFrom(toParse.delivery_fees)
+        this.discounter.discountsFrom(toParse.discounts)
+    }
+    return this;
 };
 
-Site.prototype.priceOf = function(articleId){
-  return this.articles.filter(
-      function(data){ return data.id == articleId }
-  )[0].price;
+Site.prototype.priceOf = function (articleId) {
+    var discounter = this.discounter;
+    return this.articles
+        .filter(function (article) {
+            return article.id == articleId
+        })
+        .map(function (article) {
+            return discounter.applyDiscount(article)
+        })[0];
 };
 
-Site.prototype.chargeForDelivery = function(prices) {
+Site.prototype.chargeForDelivery = function (prices) {
     var pricesWithFees = {};
-    for (var price in prices){
+    for (var price in prices) {
         pricesWithFees[price] = prices[price] + this.delivery.feesFor(prices[price])
     }
     return pricesWithFees
 };
 
 
-Site.prototype.getArticles = function() {
-	return this.articles
+Site.prototype.getArticles = function () {
+    return this.articles
 };
 
-Site.prototype.getCarts = function() {
-	return this.carts
+Site.prototype.getCarts = function () {
+    return this.carts
 };
 
 function isEmpty(jsonContent) {
