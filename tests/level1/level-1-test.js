@@ -1,5 +1,4 @@
 var chai = require('chai');
-var sinon = require('sinon');
 var expect = chai.expect;
 var Checkout = require('./../../src/checkout');
 
@@ -32,8 +31,8 @@ describe('Level1', function() {
 		var checkout = new Checkout({
 			"articles": [
 			{ "id": 1, "name": "water", "price": 100 },
-			{ "id": 2, "name": "honey", "price": 200 },
-			],
+			{ "id": 2, "name": "honey", "price": 200 }
+            ],
 			"carts": [
 			{
 				"id": 1,
