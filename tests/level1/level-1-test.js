@@ -4,9 +4,9 @@ var Checkout = require('./../../src/checkout');
 
 describe('Level1', function() {
 
-	it('should return 0 when no items are ordered', function() {
+	it('returns no cart if there is no cart in the input', function() {
 		var checkout = new Checkout({});
-		expect(checkout.compute()).to.equal(0);
+		expect(checkout.compute().carts.length).to.equal(0);
 	});
 
 

@@ -5,18 +5,15 @@ function Checkout(articlesAndCheckouts) {
 }
 
 Checkout.prototype.compute = function() {
-	if (this.site.isEmpty()) {
-		return 0
-	}
-
 	var prices = {};
 	var carts = this.site.getCarts();
-	for(var cart in carts) {
+	for(var cartId in carts) {
 		var price = 0;
-		for (var item in carts[cart].items) {
-            price += carts[cart].items[item].quantity * this.site.priceOf(carts[cart].items[item].article_id)
+        var cart = carts[cartId];
+        for (var item in cart.items) {
+            price += cart.items[item].quantity * this.site.priceOf(cart.items[item].article_id)
 		}
-		prices[carts[cart].id] = price
+		prices[cart.id] = price
 	}
 
 	var pricesWithDeliveryFees = this.site.chargeForDelivery(prices)

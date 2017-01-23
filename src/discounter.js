@@ -1,5 +1,5 @@
 function Discounter() {
-    this.discounts = []
+    this.discounts = [];
     this.rounding = function(price) {return Math.floor(price)};
 }
 

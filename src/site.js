@@ -8,10 +8,6 @@ function Site() {
     this.discounter = new Discounter();
 }
 
-Site.prototype.isEmpty = function () {
-    return this.articles.length === 0 || this.carts.length === 0
-};
-
 Site.prototype.parse = function (toParse) {
     if (!isEmpty(toParse)) {
         this.articles = toParse.articles;
