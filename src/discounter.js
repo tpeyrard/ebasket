@@ -7,9 +7,14 @@ Discounter.prototype.discountsFrom = function (discounts) {
 };
 
 Discounter.prototype.applyDiscount = function (article) {
-    for (var discount in this.discounts){
-        if(this.discounts[discount].article_id == article.id){
-            return article.price - this.discounts[discount].value
+    for (var discountId in this.discounts) {
+        var discount = this.discounts[discountId];
+        if (discount.article_id == article.id) {
+            // I could hide this if statement in a 'discount' object
+            if ('amount' === discount.type)
+                return article.price - discount.value
+            else
+                return article.price * (discount.value / 100)
         }
     }
     return article.price
